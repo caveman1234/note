@@ -40,3 +40,18 @@ externals: {
 
 "subtract":eval("module.exports = jQuery[\"map\"];"）
 ```
+```js
+for(key) {
+		const hook = this.get(key);
+		if (hook !== undefined) {
+			return hook;
+		}
+		let newHook = this._factory(key);
+		const interceptors = this._interceptors;
+		for (let i = 0; i < interceptors.length; i++) {
+			newHook = interceptors[i].factory(key, newHook);
+		}
+		this._map.set(key, newHook);
+		return newHook;
+	}
+```
